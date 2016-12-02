@@ -21,9 +21,10 @@ class Element extends EntityDao
     public function getAll($getQuery = false, $id)
     {
         $query = $this->createQueryBuilder()
-                      ->select("u, hs, hms")
+                      ->select("u, hs, hms, htlog")
                       ->from('\Entity\Element', "u")
                       ->leftJoin("u.heat_sensor", "hs")
+                        ->leftJoin("hs.heat_sensor_log", "htlog")
                       ->leftJoin("u.humidity_sensor", "hms")
                       ->where("u.user = :user")
                         ->setParameter("user", $id);
