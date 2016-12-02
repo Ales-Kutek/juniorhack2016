@@ -1,0 +1,13 @@
+\Entity\User:
+    user1:
+        name: "Admin"
+        surname: "Administrator"
+        username: "admin"
+        password: "admin"
+        email: "admin@tps.cz"
+        group: '@group1'
+        blocked: 0
+        phone: <phoneNumber()>
+        street: <streetName()>
+        city: <city()>
+        zip: <postcode()>

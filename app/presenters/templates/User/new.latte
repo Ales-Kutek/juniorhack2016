@@ -1,0 +1,100 @@
+{block heading}
+Přidání zaměstnance<span class="sticky_heading"></span>
+{/block}
+
+{block content}
+
+{form new, class => 'formNew' }
+
+    {form errors}
+
+        <div class="icHelper">
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="box box-primary formBox formBox--special">
+                    <div class="box-body">
+                        {group 'Základní údaje'}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="box box-primary formBox">
+                    <div class="box-body">
+                        {group 'Adresa'}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="box box-primary formBox">
+                    <div class="box-body">
+                        {group 'Nastavení'}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="box box-primary formBox">
+                    <div class="box-body">
+                        {group 'Data'}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {form buttons}
+
+        {/form}
+
+        {/block}
+
+
+        {block script}
+        <script type="text/javascript">
+
+            var unsaved = false;
+            $(":input").change(function () {
+                unsaved = true;
+            });
+            function unloadPage() {
+                if (unsaved) {
+                    return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                }
+            }
+            window.onbeforeunload = unloadPage;
+            $('.form-actions .btn.btn-default').click(function () {
+                unsaved = false;
+            });
+
+            var data = {
+                name: $("input[name='name']").val(),
+                surname: $("input[name='surname']").val()
+            }
+
+            var changeUsername = function (data) {
+                var name = slugify(data["name"]);
+
+                var surname = slugify(data["surname"]);
+
+                var result = surname + "." + name;
+
+                if (name != "" && surname != "") {
+                    $("input[name='username']").val(result);
+                }
+            }
+
+            $("input[name='name']").keyup(function () {
+                data["name"] = $(this).val();
+
+                changeUsername(data);
+            });
+
+            $("input[name='surname']").keyup(function () {
+                data["surname"] = $(this).val();
+
+                changeUsername(data);
+            });
+        </script>
+        {/block}

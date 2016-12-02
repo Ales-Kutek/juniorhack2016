@@ -1,0 +1,22 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<h1>Nástěnka</h1>
+
+<div class="row">
+    {foreach $rooms as $r}
+    <div class="col-lg-3 col-xs-6" style="background-color: {$r->color}">
+        <div class="bg-aqua">
+                <h3>{$r->name}</h3>
+                <p></p>
+        </div>
+    </div>
+    {/foreach}
+</div>
+
+<div class="row">
+    <a href="{plink Element:new}">Přidat novou místnost</a>
+</div>
+    
+{/block}

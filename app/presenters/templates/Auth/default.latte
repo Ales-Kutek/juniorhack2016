@@ -1,0 +1,80 @@
+{block content}
+
+<img src="/dist/img/bobcat.png" class="loginLogo" alt="logo" title="Bobcat">
+
+<div class="login-box">
+    <div class="login-logo">
+        {*
+        <b>CRM</b>
+        <br>
+        *}
+        Rental
+    </div>
+        
+    {form authForm}
+    <div n:foreach="$flashes as $flash" class="callout callout-{$flash->type}">{$flash->message}</div>
+    <div n:foreach="$form->getOwnErrors() as $value" class="callout callout-danger">{$value}</div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+
+        <p class="login-box-msg">Přihlašte se</p>
+
+        {*control authForm*}
+
+        
+            <div class="relative">
+                {pair username}
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="relative">
+                {pair password}
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="relative">
+                {pair remember}
+            </div>
+            <div class="relative">
+                {pair send}
+            </div>
+        {/form}
+
+        {*form authForm}
+        <div class="form-group has-feedback">
+            {input user, 'class' => "form-control", 'placeholder' => "Uživatel"}
+
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            {input pass, 'class' => "form-control", 'placeholder' => "Heslo"}
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-4">
+                {input send, 'class' => 'btn btn-primary btn-block btn-flat'}
+            </div>
+            <!-- /.col -->
+        </div>
+    {/form*}
+
+        {*
+<div class="social-auth-links text-center">
+    <p>- OR -</p>
+    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+    <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+</div>
+<!-- /.social-auth-links -->
+
+<a href="#">Zapomněl jsem heslo.</a><br>
+        *}
+
+        {*<a href="register.html" class="text-center">Register a new membership</a>*}
+
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->

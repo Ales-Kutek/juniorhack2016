@@ -1,0 +1,40 @@
+includes:
+    - parts/extensions.neon
+    - parts/commands.neon
+    - parts/parameters.neon
+    - parts/services.neon
+
+php:
+	date.timezone: Europe/Prague
+
+doctrine:
+        default:
+            user: 'root'
+            password: '4tuz!QtH'
+            dbname: hackathon
+            metadata:
+                Entity: %appDir%/entity
+            filters:
+                softdeleteable:
+                    class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                    enabled: false
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+session:
+	expiration: 14 days
+
+nette:
+    mailer:
+        smtp: %mailer.smtp%
+
+forms:
+    messages:
+        EQUAL: 'Please enter %s.'
+        FILLED: 'Please complete mandatory field.'
+        MIN_LENGTH: 'Please enter a value of at least %d characters.'
+        EMAIL: '%label must be valid e-mail'
+        REQUIRED: 'Pole je povinné.'

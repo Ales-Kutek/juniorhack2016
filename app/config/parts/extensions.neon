@@ -1,0 +1,40 @@
+extensions:
+        console: Kdyby\Console\DI\ConsoleExtension
+        events: Kdyby\Events\DI\EventsExtension
+        annotations: Kdyby\Annotations\DI\AnnotationsExtension
+        doctrine: Kdyby\Doctrine\DI\OrmExtension
+        gedmo: Rixxi\Gedmo\DI\OrmExtension
+        doctrine2identity: Majkl578\NetteAddons\Doctrine2Identity\DI\IdentityExtension
+        fixtures: Zenify\DoctrineFixtures\DI\FixturesExtension
+        bootstrap: Instante\Bootstrap3Renderer\DI\RendererExtension
+        replicator: Kdyby\Replicator\DI\ReplicatorExtension
+        monolog: Kdyby\Monolog\DI\MonologExtension
+        - Zenify\DoctrineFilters\DI\FiltersExtension
+        - Symnedi\EventDispatcher\DI\EventDispatcherExtension
+
+gedmo:
+        translatableLocale: cs_CZ
+        defaultLocale: cs_CZ
+
+        # enable all annotations
+        all: on
+        # enable per annotation
+        #loggable: on
+        #sluggable: on
+        #softDeleteable: on
+        #sortable: on
+        #timestampable: on
+        #translatable: on
+        #tree: on
+        #uploadable: on
+
+fixtures:
+        locale: "cs_CZ"
+        seed: 1
+
+monolog:
+    name: hackathon
+    hookToTracy: on
+    handlers:
+        applog: Monolog\Handler\StreamHandler(%appDir%/../log/monolog.txt)
+    

@@ -1,0 +1,19 @@
+aside{
+    display: none;
+    visibility:hidden;
+    width: 0 !important;
+}
+
+
+.chromeDetect + .main-footer,
+.chromeDetect.content-wrapper{
+    width: 100%;
+    left: -230px;
+    position: relative;
+}
+
+.content,
+.invoice{
+    width: 100%;
+    padding: 0;
+}

@@ -1,0 +1,9 @@
+{block confirm}
+<div class="nojsConfirm">
+    <div class="callout callout-danger">
+        <h4>Opravdu chcete tuto položku smazat?</h4>
+        <a class="btn btn-primary" href="{plink 'delete!', 'id' => $presenter->getParameter('id'), 'confirm' => 1}">ANO</a>
+        <a class="btn btn-primary" href="{plink default}">NE</a>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,17 @@
+services:
+        authenticator: Model\Authenticator(@doctrine.dao(Entity\User))
+        permission: IPub\Permissions\DI\PermissionsExtension
+        security.userStorage: Majkl578\NetteAddons\Doctrine2Identity\Http\UserStorage
+        router: App\RouterFactory::createRouter
+        fileUploader:
+            class: FileUploadSubscriber('%appDir%/../www/upload')
+            tags: [kdyby.subscriber]
+        - \App\Forms\FormFactory
+        - \App\Forms\UserFormFactory
+        - \App\Forms\ElementFormFactory
+        - \App\Forms\AuthFormFactory
+        - \App\Grids\UserGridFactory
+        - \App\Grids\GridFactory
+        - \Repository\User
+        - \Repository\Element
+        - \Repository\Group

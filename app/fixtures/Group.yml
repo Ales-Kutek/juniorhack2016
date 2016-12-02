@@ -1,0 +1,6 @@
+\Entity\Group:
+    group1:
+        name: 'Admin'
+        
+    group2:
+        name: 'Uživatel'

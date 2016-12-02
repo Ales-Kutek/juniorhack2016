@@ -1,0 +1,3 @@
+console:
+        commands:
+                - App\Console\FixturesCommand
