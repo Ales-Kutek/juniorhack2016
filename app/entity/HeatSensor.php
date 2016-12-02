@@ -32,10 +32,16 @@ class HeatSensor extends \Superclass\Base
     protected $id;
     
     /**
+     * @ORM\Column(type="string", length=255, unique=false)
+     * @var string
+     */
+    protected $name; 
+    
+    /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @var string
      */
-    protected $name;
+    protected $code;
         
     /**
      * @manyToOne(targetEntity="Element")

@@ -38,11 +38,16 @@ class HumiditySensor extends \Superclass\Base
     protected $element;
         
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=false)
      * @var string
      */
     protected $name;
         
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @var string
+     */
+    protected $code;
     
     /**
      * @OneToMany(targetEntity="HumiditySensorLog", cascade={"persist"}, mappedBy="humidity_sensor")

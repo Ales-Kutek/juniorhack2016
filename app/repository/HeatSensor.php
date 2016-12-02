@@ -47,11 +47,11 @@ class HeatSensor extends EntityDao
         return $array;
     }
     
-    public function insert($id, $heat) {
+    public function insert($id, $heat, $name) {
         $item = new \Entity\HeatSensor();
         
-        $item->value = $heat;
         $item->updated = new \DateTime();
+        $item->name = $name;
         
         $item->element = $this->getEntityManager()->getRepository(\Entity\Element::getClassName())
                 ->findOneBy(array("id" => $id));
