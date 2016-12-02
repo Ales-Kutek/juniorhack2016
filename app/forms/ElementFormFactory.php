@@ -69,6 +69,8 @@ class ElementFormFactory {
             $form->addText("name", "Název sensoru")->setRequired();
             $form->addText("code", "Köd senzoru")->setRequired();
 
+            $form->addHidden("id");
+            
             $form->addSubmit("Odeslat");
 
             $form->onSuccess[] = function($form, $values) use ($onSuccess) {

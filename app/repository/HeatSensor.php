@@ -53,7 +53,6 @@ class HeatSensor extends EntityDao
         $item->updated = new \DateTime();
         $item->name = $name;
         $item->code = $code;
-        
         $item->element = $this->getEntityManager()->getRepository(\Entity\Element::getClassName())
                 ->findOneBy(array("id" => $id));
         
