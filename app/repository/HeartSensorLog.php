@@ -1,6 +1,6 @@
 <?php
 /**
- * HeatSensor repository
+ * HeatSensorLog repository
  */
 
 namespace Repository;
@@ -8,9 +8,9 @@ namespace Repository;
 use Kdyby\Doctrine\EntityDao;
 
 /**
- * HeatSensor repository class
+ * HeatSensorLog repository class
  */
-class HeatSensor extends EntityDao
+class HeatSensorLog extends EntityDao
 {
     /**
      * získání všech hodnot
@@ -20,7 +20,7 @@ class HeatSensor extends EntityDao
     public function getAll($getQuery = FALSE) {
         $query = $this->createQueryBuilder()
                       ->select("u")
-                      ->from('\Entity\HeatSensor', "u");
+                      ->from('\Entity\HeatSensorLog', "u");
         
         if ($getQuery) {
             return $query;
@@ -47,14 +47,13 @@ class HeatSensor extends EntityDao
         return $array;
     }
     
-    public function insert($id, $name, $code) {
-        $item = new \Entity\HeatSensor();
+    public function insert($id, $value) {
+        $item = new \Entity\HeatSensorLog();
         
         $item->updated = new \DateTime();
-        $item->name = $name;
-        $item->code = $code;
+        $item->value = $value;
         
-        $item->element = $this->getEntityManager()->getRepository(\Entity\Element::getClassName())
+        $item->heat_sensor = $this->getEntityManager()->getRepository(\Entity\HeatSensor::getClassName())
                 ->findOneBy(array("id" => $id));
         
         $this->add($item);

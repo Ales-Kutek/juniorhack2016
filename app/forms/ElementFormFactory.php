@@ -62,4 +62,19 @@ class ElementFormFactory {
         
         return $form;
     }
+    
+        public function createSensor(callable $onSuccess, \Nette\Application\IPresenter $presenter, Nette\Bridges\ApplicationLatte\Template $template) {
+            $form = $this->factory->create($presenter, $template);
+
+            $form->addText("name", "Název sensoru")->setRequired();
+            $form->addText("code", "Köd senzoru")->setRequired();
+
+            $form->addSubmit("Odeslat");
+
+            $form->onSuccess[] = function($form, $values) use ($onSuccess) {
+                $onSuccess($form, $values);
+            };
+
+            return $form;
+    }
 }

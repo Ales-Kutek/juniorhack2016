@@ -15,6 +15,11 @@
                 <li>{*popis*}</li> 
                 </p>
             </div>
+    <div class="col-lg-3 col-xs-6" style="background-color: {$r->color}">
+        <div class="bg-aqua">
+                <h3>{$r->name}</h3>
+                <p></p>
+                <a href="{plink HeatSensor:new, id => $r->id}">Přidat nový sensor</a>
         </div>
     </div>
     {/foreach}

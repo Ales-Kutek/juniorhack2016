@@ -50,7 +50,7 @@ class HumiditySensor extends EntityDao
     public function insert($id, $heat) {
         $item = new \Entity\HumiditySensor();
         
-        $item->humidity = $heat;
+        $item->value = $heat;
         $item->updated = new \DateTime();
         
         $item->element = $this->getEntityManager()->getRepository(\Entity\Element::getClassName())

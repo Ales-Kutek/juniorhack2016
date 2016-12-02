@@ -18,10 +18,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * HeatSensor
  *
- * @ORM\Table(name="`heat_sensor`")
- * @ORM\Entity(repositoryClass="Repository\HeatSensor")
+ * @ORM\Table(name="`heat_sensor_log`")
+ * @ORM\Entity(repositoryClass="Repository\HeatSensorLog")
  */
-class HeatSensor extends \Superclass\Base
+class HeatSensorLog extends \Superclass\Base
 {
     /**
      * @ORM\Id
@@ -32,28 +32,16 @@ class HeatSensor extends \Superclass\Base
     protected $id;
     
     /**
-     * @ORM\Column(type="string", length=255, unique=false)
-     * @var string
+     * @ORM\Column(type="integer", nullable=false)
+     * @var integer
      */
-    protected $name; 
+    protected $value;
     
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @var string
+     * @manyToOne(targetEntity="HeatSensor")
+     * @joinColumn(name="heat_sensor", referencedColumnName="id")
      */
-    protected $code;
-        
-    /**
-     * @manyToOne(targetEntity="Element")
-     * @joinColumn(name="element", referencedColumnName="id")
-     */
-    protected $element;
-    
-    /**
-     * @OneToMany(targetEntity="HeatSensorLog", cascade={"persist"}, mappedBy="heat_sensor")
-     * @JoinColumn(name="heat_sensor", referencedColumnName="heat_sensor")
-     */
-    protected $heat_sensor_log;
+    protected $heat_sensor;
 
     public function getId()
     {
