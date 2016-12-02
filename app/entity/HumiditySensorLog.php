@@ -1,6 +1,6 @@
 <?php
 /**
- * HumiditySensor Entity
+ * HumiditySensorLog Entity
  */
 
 namespace Entity;
@@ -16,12 +16,12 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * HumiditySensor
+ * HumiditySensorLog
  *
- * @ORM\Table(name="`humidity_sensor`")
- * @ORM\Entity(repositoryClass="Repository\HumiditySensor")
+ * @ORM\Table(name="`humidity_sensor_log`")
+ * @ORM\Entity(repositoryClass="Repository\HumiditySensorLog")
  */
-class HumiditySensor extends \Superclass\Base
+class HumiditySensorLog extends \Superclass\Base
 {
     /**
      * @ORM\Id
@@ -30,25 +30,18 @@ class HumiditySensor extends \Superclass\Base
      * @var integer
      */
     protected $id;
-        
-    /**
-     * @manyToOne(targetEntity="Element")
-     * @joinColumn(name="element", referencedColumnName="id")
-     */
-    protected $element;
-        
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @var string
-     */
-    protected $name;
-        
     
     /**
-     * @OneToMany(targetEntity="HumiditySensorLog", cascade={"persist"}, mappedBy="humidity_sensor")
-     * @JoinColumn(name="humidity_sensor_log", referencedColumnName="humidity_sensor")
+     * @ORM\Column(type="integer", nullable=false)
+     * @var integer
      */
-    protected $heat_sensor_log;
+    protected $value;
+    
+    /**
+     * @manyToOne(targetEntity="HumiditySensor")
+     * @joinColumn(name="humidity_sensor", referencedColumnName="id")
+     */
+    protected $humidity_sensor;
 
     public function getId()
     {
