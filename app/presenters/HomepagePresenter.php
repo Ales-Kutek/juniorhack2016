@@ -16,7 +16,7 @@ class HomepagePresenter extends SecurePresenter
 
 	public function renderDefault()
 	{
-		$this->template->rooms = $this->elementRepository->getAll();
+		$this->template->rooms = $this->elementRepository->getAll(FALSE, $this->user->identity->id);
 	}
 
 }

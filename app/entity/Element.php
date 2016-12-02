@@ -44,6 +44,12 @@ class Element extends \Superclass\Base
     protected $heat_sensor;
 
     /**
+     * @OneToMany(targetEntity="HumiditySensor", cascade={"persist"}, mappedBy="element")
+     * @JoinColumn(name="humidty_sensor", referencedColumnName="element")
+     */
+    protected $humidity_sensor;
+
+    /**
      * @var string
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */

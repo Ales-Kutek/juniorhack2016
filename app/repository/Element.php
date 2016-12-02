@@ -18,11 +18,15 @@ class Element extends EntityDao
      * Vrátí všechny uživatele
      * @return array
      */
-    public function getAll($getQuery = false)
+    public function getAll($getQuery = false, $id)
     {
         $query = $this->createQueryBuilder()
-                      ->select("u")
-                      ->from("\Entity\Element", "u");
+                      ->select("u, hs, hms")
+                      ->from('\Entity\Element', "u")
+                      ->leftJoin("u.heat_sensor", "hs")
+                      ->leftJoin("u.humidity_sensor", "hms")
+                      ->where("u.user = :user")
+                        ->setParameter("user", $id);
         
         if ($getQuery) {
             return $query;
