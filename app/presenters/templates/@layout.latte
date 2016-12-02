@@ -24,23 +24,22 @@
         <link rel="stylesheet" href="/css/colorbox.css">
         <link rel="stylesheet" href="/dist/css/custom.css">
         <link rel="stylesheet" href="/css/datagrid.min.css">
-
         <link rel=stylesheet href="/dist/css/print.css" media="print">
-
     </head>
     <body class="hold-transition sidebar-mini skin-black {@$_COOKIE['sidebar_type']}{if $user->isInRole('Admin')} admin{/if}">
 
-        <div class="wrapper">
+        <div class="wrapper col-xs-12">
 
             <header class="main-header">
 
                 <a href="/" class="logo">
-                    <span class="logo-mini"></span>
+                    <span class="logo-mini"></span>                   
                     <span class="logo-lg"></span>
                 </a>
 
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
+                    <span class="title-head">Home Control online</span>
                     <!-- Sidebar toggle button-->
                         {*
                         <a href="#" class="sidebar-toggle" role="button" data-cookie="sidebar-open">
@@ -303,7 +302,7 @@
                 <!-- Content Header (Page header) -->
                 <div class="stickyHelper">
                     <section class="content-header sticky">
-                        <h1>{block heading}{/block}</h1>
+                            <h1>{block heading}{/block}</h1>
                         {*control breadcrumb*}
                     </section>
                 </div>
