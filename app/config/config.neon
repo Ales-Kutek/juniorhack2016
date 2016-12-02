@@ -10,7 +10,7 @@ php:
 doctrine:
         default:
             user: 'root'
-            password: '4tuz!QtH'
+            password: 
             dbname: hackathon
             metadata:
                 Entity: %appDir%/entity
