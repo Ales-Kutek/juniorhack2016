@@ -1,5 +1,4 @@
 body{
-    min-width: 1280px;
     overflow-x: scroll;
 }
 
@@ -385,9 +384,6 @@ div[id*="region-pair"] label{
 }
 .stickyToggle{
     top: 0;
-}
-.content-wrapper, .right-side{
-    background: #c5d8ef;
 }
 
 .widget-user-desc.special,
@@ -906,7 +902,7 @@ div[id*="frm-new-person"] .input-group .input-group-addon{
 body.admin .content-wrapper,
 body.admin .wrapper,
 body.admin{
-    min-height: 1000px !important;
+    min-height: 500px !important;
 }
 body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     padding: 9px 5px 9px 15px;
@@ -960,4 +956,65 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     position: relative;
     margin: 0;
     margin-left: 10px;
+}
+.content-wrapper{
+    width:100% !important;
+    margin:0px !important;
+    padding:0px !important;
+    padding-bottom:30px;
+}
+.wrapper{
+    background:white !important;
+    height:auto !important;
+    padding:0 !important;
+    margin:0px !important;
+}
+@media only screen and (min-width : 320px) { 
+    .content{
+        background:white !important;
+        height:auto !important;
+        padding:0px !important;
+        margin:0px !important;
+        padding-bottom:200px;
+    }
+    @font-face {
+    font-family:"header-font";
+    src: url(../../fonts/AlexBrush-Regular.ttf);
+    }
+    .header-text{
+        background:#471F00 !important;
+        color:white !important;
+        padding:4px !important;
+        padding-left:15px !important;
+        margin:0px !important;
+    }
+    .navbar{
+        padding-left:80px !important;
+        padding-top:10px;
+    }
+    .title-head{
+        font-family:header-font !important;
+        font-size:30px;
+    }
+    .stickyHelper{
+        display:none;
+    }
+    .room-name{
+        padding-left:15px !important;
+    }
+    .room-name li{
+        list-style-type: square;
+    }
+}
+.content-wrapper{
+    background-color:transparent;
+}
+.box-color{
+    background:#471F00;
+    color:white;
+}
+.title-box{
+    text-align:center;
+    padding:1px;
+    margin-top:5px;
 }
