@@ -15,3 +15,5 @@ services:
         - \Repository\User
         - \Repository\Element
         - \Repository\Group
+        - \Repository\HeatSensor
+        - \Repository\HumiditySensor

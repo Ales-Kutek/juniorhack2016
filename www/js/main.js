@@ -33,7 +33,6 @@ var slugify = function (str) {
 }
 
 jQuery(document).ready(function ($) {
-
     //nasazení input mask pluginu
     $(":input").inputmask();
 
