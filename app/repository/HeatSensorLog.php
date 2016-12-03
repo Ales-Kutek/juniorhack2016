@@ -33,6 +33,22 @@ class HeatSensorLog extends EntityDao
         return $result;
     }
     
+    public function getSingle($getQuery = FALSE, $id) {
+        $query = $this->createQueryBuilder()
+                      ->select("u")
+                      ->from('\Entity\HeatSensorLog', "u")
+                        ->where("u.heat_sensor = :hs")
+                            ->setParameter("hs", $id)
+                      ->orderBy("u.created", "DESC")
+                        ->setMaxResults(1);
+        
+        $query = $query->getQuery();
+        
+        $result = $query->getResult();
+        
+        return $result;
+    }
+    
     /**
      * získání všech primárních hodnot jako array
      * @return array

@@ -9,6 +9,12 @@
         <div class="bg-aqua">
                 <h3>{$r->name}</h3>
                 <p></p>
+                {foreach $r->heat_sensor as $v}
+                    {$v->name}: {$heat_sensor[$v->id][0]->value}°C<br>
+                {/foreach}
+                {foreach $r->humidity_sensor as $v}
+                    {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
+                {/foreach}
                 <a href="{plink HeatSensor:new, id => $r->id}">Přidat nový sensor</a>
         </div>
     </div>
