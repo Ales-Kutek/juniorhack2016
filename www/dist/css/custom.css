@@ -1062,8 +1062,11 @@ header{
     background:#C0392B !important;
     border: 1px solid #C0392B;
 }
-main-header{
+.main-header{
     background:white !important;
+}
+.remember-butt{
+    background:red !important;
 }
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 768px) {
