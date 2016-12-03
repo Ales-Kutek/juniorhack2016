@@ -152,4 +152,9 @@ class HomepagePresenter extends SecurePresenter
             echo '<meta http-equiv="refresh" content="5">';
             die();
         }
+        
+        public function getLight() {
+            
+            die();
+        }
 }
