@@ -10,20 +10,47 @@ class HomepagePresenter extends SecurePresenter
         /** @var \Repository\Element $elementRepository */
         private $elementRepository;
         
-        public function __construct(\Repository\Element $elementRepository) {
+        /** @var \Repository\HeatSensor $heatSensorRepository */
+        private $heatSensorRepository;
+        
+        /** @var \Repository\HeatSensorLog $heatSensorLogRepository */
+        private $heatSensorLogRepository;
+        
+        /** @var \Repository\HumiditySensor $humiditySensorRepository */
+        private $humiditySensorRepository;
+        
+        /** @var \Repository\HumiditySensorLog @inject */
+        public $humiditySensorLogRepository;
+        
+        public function __construct(\Repository\Element $elementRepository,
+                                    \Repository\HeatSensor $heatSensorRepository,
+                                    \Repository\HumiditySensor $humiditySensorRepository,
+                                    \Repository\HeatSensorLog $heatSensorLogRepository) {
+            
             $this->elementRepository = $elementRepository;
+            $this->heatSensorRepository = $heatSensorRepository;
+            $this->humiditySensorRepository = $humiditySensorRepository;
+            $this->heatSensorLogRepository = $heatSensorLogRepository;
         }
 
 	public function renderDefault()
 	{
-		$this->template->rooms = $this->elementRepository->getAll(FALSE, $this->user->identity->id);
+		$rooms = $this->elementRepository->getAll(FALSE, $this->user->identity->id);
+                
+                $heat_sensor = array();
+                $humidity_sensor = array();
+                
+                foreach ($rooms as $k => $v) {
+                    foreach ($v->heat_sensor as $key => $value) {
+                        $heat_sensor[$value->id] = $this->heatSensorLogRepository->getSingle(FALSE, $value->id);
+                    }
+                    foreach ($v->humidity_sensor as $key => $value) {
+                        $humidity_sensor[$value->id] = $this->humiditySensorLogRepository->getSingle(FALSE, $value->id);
+                    }
+                }
+                
+                $this->template->heat_sensor = $heat_sensor;
+                $this->template->humidity_sensor = $humidity_sensor;
+                $this->template->rooms = $rooms;
 	}
-        
-        public function handleGetValues() {
-            $content = file_get_contents("http://192.168.133.103/");
-            
-            echo $content;
-            die();
-        }
-
 }

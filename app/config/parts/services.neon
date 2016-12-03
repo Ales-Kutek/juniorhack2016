@@ -17,4 +17,5 @@ services:
         - \Repository\Group
         - \Repository\HeatSensor
         - \Repository\HeatSensorLog
+        - \Repository\HumiditySensorLog
         - \Repository\HumiditySensor
