@@ -6,7 +6,7 @@ var _id = null;
         
 $(function () {
     
-        $("._room").click(function() {
+        $("body").on("click", "._room", function() {
             _id = $(this).attr("data-id");
             
             _data = $.param({

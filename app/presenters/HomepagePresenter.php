@@ -33,6 +33,11 @@ class HomepagePresenter extends SecurePresenter
             $this->heatSensorLogRepository = $heatSensorLogRepository;
         }
         
+        public function handleRedraw()
+        {
+            $this->redrawControl();
+        }
+        
         public function handleGetChart($id) {
             $element = $this->elementRepository->getSingle($id, TRUE);
             
@@ -106,10 +111,24 @@ class HomepagePresenter extends SecurePresenter
                     }
                 }
                 
+                $this->template->light = (int) file_get_contents(WWW_DIR . "/light.db");
+                
                 $this->template->heat_sensor = $heat_sensor;
                 $this->template->humidity_sensor = $humidity_sensor;
                 $this->template->rooms = $rooms;
 	}
+        
+        public function handleLight() {
+            $ch = curl_init();
+            
+            $url = "http://192.168.43.19/relayToggle";
+            
+            curl_setopt($ch, CURLOPT_URL, $url); 
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+            $output = curl_exec($ch); 
+            curl_close($ch);    
+            $content = $output;
+        }
         
         public function handleGetArdu() {
             $ch = curl_init();
@@ -144,7 +163,9 @@ class HomepagePresenter extends SecurePresenter
             $this->heatSensorLogRepository->getEntityManager()->persist($humidityLogItem);
             $this->heatSensorLogRepository->getEntityManager()->persist($heatLogItem);
             $this->heatSensorLogRepository->getEntityManager()->flush();
-            echo '<meta http-equiv="refresh" content="20">';
+            
+            file_put_contents(WWW_DIR . "/light.db", $light);
+            echo '<meta http-equiv="refresh" content="5">';
             die();
         }
 }

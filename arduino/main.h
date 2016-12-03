@@ -4,9 +4,9 @@
 #include <ESP8266_Simple.h>
 
 //--SSID--//
-#define ESP8266_SSID  "Xperia Z5_82b3"
+#define ESP8266_SSID  "HUAWEI P8 lite"
 //--PASSWORD SSID--//
-#define ESP8266_PASS  "llllllll"
+#define ESP8266_PASS  "12345678"
 
 //--RX,TX--//
 ESP8266_Simple wifi(8,9);
@@ -14,6 +14,7 @@ dht11 tempLogger;
 
 int temp = 0;
 int humidity = 0;
+int relayOnline = 0;
 
 void setup()
 {
@@ -26,8 +27,7 @@ void setup()
   wifi.setupAsWifiStation(ESP8266_SSID, ESP8266_PASS, &Serial);
    
   static ESP8266_HttpServerHandler myServerHandlers[] = {  
-    { PSTR("GET /relayOn"), relayOn }, 
-    { PSTR("GET /relayOff"), relayOff },   
+    { PSTR("GET /relayToggle"), relayToggle },    
     { PSTR("GET "),    index   } 
   };
   //Start HTTP Server <MAIN>
@@ -63,30 +63,30 @@ unsigned long index(char *buffer, int bufferLength)
   ultoa(temp,buffer+strlen(buffer),10);
   strncpy_P(buffer+strlen(buffer), PSTR(";"), bufferLength-strlen(buffer));
   ultoa(humidity,buffer+strlen(buffer),10);
+  strncpy_P(buffer+strlen(buffer), PSTR(";"), bufferLength-strlen(buffer));
+  ultoa(relayOnline,buffer+strlen(buffer),10);
   //--END--//
   return ESP8266_HTML | 404;
 }
 
 //--RELAY--//
-//--On--//
-unsigned long relayOn(char *buffer, int bufferLength)
+//--TOGGLE--//
+unsigned long relayToggle(char *buffer, int bufferLength)
 {  
 
-    digitalWrite(11, HIGH);
-    digitalWrite(12, HIGH);
-    strncpy_P(buffer, PSTR("ON"), bufferLength);
-    
+    if(relayOnline == 0)
+    {
+      digitalWrite(11, HIGH);
+      digitalWrite(12, HIGH);
+      strncpy_P(buffer, PSTR("ON"), bufferLength);
+      relayOnline = 1; 
+    }
+    else
+    {
+      digitalWrite(11, LOW);
+      digitalWrite(12, LOW);
+      strncpy_P(buffer, PSTR("OFF"), bufferLength);
+      relayOnline = 0;
+    }
     return ESP8266_HTML | 404;
 }
-
-//--OFF--//
-unsigned long relayOff(char *buffer, int bufferLength)
-{  
-
-    digitalWrite(11, LOW);
-    digitalWrite(12, LOW);
-    strncpy_P(buffer, PSTR("OFF"), bufferLength);
-
-    return ESP8266_HTML | 404;
-}
-//--EXIT--//

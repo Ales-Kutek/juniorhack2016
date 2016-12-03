@@ -52,7 +52,7 @@ class ElementFormFactory {
         $form = $this->factory->create($presenter, $template);
 
         $form->addText("name", "Název místnosti")->setRequired();
-        $form->addText("color", "Barva záložky")->setRequired()->setAttribute("class", "jscolor");
+        $form->addHidden("color", "Barva záložky")->setValue("fffff");
         
         $form->addSubmit("Odeslat");
         

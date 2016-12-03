@@ -5,7 +5,7 @@
 {block sidebar}
 <div class="row">
     {snippet room}
-        {foreach $rooms as $r}
+        {foreach $rooms as $k => $r}
         <div class="col-lg-12 col-xs-12" style="background-color: {$r->color}">
             <div class="bg-aqua _room" data-id="{$r->id}">
                     <h3 class="bg-aqua-text">{$r->name}</h3>
@@ -16,8 +16,15 @@
                     {foreach $r->humidity_sensor as $v}
                         {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
                     {/foreach}
+                    {if $k == 0}
+                        {if $light == 0}
+                            Světla: <a class="ajax" href="{plink light!}"><i class="fa fa-lightbulb-o" style="color: red; font-size: 50px" aria-hidden="true"></i></a>
+                        {else}
+                        Světla: <a class="ajax" href="{plink light!}"><i class="fa fa-lightbulb-o" style="color: yellow; font-size: 50px" aria-hidden="true"></i></a>
+                        {/if} 
+                    {/if}
                     <a href="{plink HeatSensor:new, id => $r->id}"><button class="add-sensor">Přidat sensor</button></a>
-            </div>
+                </div>
         </div>
         {/foreach}
     {/snippet}
@@ -31,4 +38,24 @@
 
 {block chart}
     <div id="main-chart"></div>
+{/block}
+
+{block script}
+    <script>
+        var dd = new Object();
+        
+        dd["do"] = "redraw";
+        setInterval(function() {
+            $.ajax({
+                url: "http://localhost/",
+                dataType: "json",
+                type: "GET",
+                data: $.param(dd),
+                success: function(data) {
+                    $("#snippet--room").html(data["snippets"]["snippet--room"]);
+                }
+            });
+        }, 5000);
+        
+    </script>
 {/block}
