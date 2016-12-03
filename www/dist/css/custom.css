@@ -962,7 +962,7 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
 .bg-aqua{
     padding-left:10px;
     padding-bottom:5px;
-    margin-top:2px;
+    margin-top:1px;
     box-sizing:border-box; /*#C0392B*/
     width:20vw;
     border:4px solid #6E2018;
@@ -974,7 +974,6 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     min-height:50px;
     background:#1468A4;
     color:white;
-    margin-top:8px;
     box-sizing: border-box;
     padding-right:30px;
     background:red;
@@ -992,6 +991,9 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     background:white;
     margin-top:90px;
     margin-left:120px;
+}
+.wrapper{
+background:white !important;
 }
 .sidebar-wrapper{
     background:#C5D8EF;
@@ -1023,4 +1025,31 @@ header{
     background-size:100% 100%;
     width:100%;
     min-height:50vh;
+}
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 768px) {
+    .logo-background{
+        
+    }
+    .navbar-static-top{
+        display:none;
+    }
+    .wrapper{
+        background:white !important;
+    }
+    .content-wrapper{
+        display:none;
+    }
+    .bg-aqua{
+        margin-top:0px;
+        width:100%;
+    }
+    .sidebar-wrapper{
+        width:100%;
+        padding:0;
+        margin-top:80px;
+    }
+    .add{
+        margin:0;
+    }
 }
