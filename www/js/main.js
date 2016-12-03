@@ -38,7 +38,12 @@ $(function () {
                             },
                          series: [],
                         xAxis: {
-                           type: 'datetime'
+                           type: 'datetime',
+                           labels: {
+                                formatter: function() {
+                                  return Highcharts.dateFormat('%H:%I:%S', this.value*1000); // milliseconds not seconds
+                                },
+                            }
                         }
                         };
                         
@@ -47,8 +52,6 @@ $(function () {
                             
                             ar.push([_date, data[x]["data"][y]]);
                         }
-
-                        
 
                         if (data[x]["name"] == "Tepelný senzor") {
                             color = "red";
