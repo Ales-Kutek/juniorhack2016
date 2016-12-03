@@ -24,6 +24,7 @@ $(function () {
                     var options;
                     var ar = new Array();
                     var chart = {};
+                    var _date = [];
                     
                     for (var x = 0; x < data.length; x++) {
                         console.log("Lfdsfg");
@@ -33,11 +34,16 @@ $(function () {
                                 renderTo: 'main-chart',
                                 defaultSeriesType: 'spline'
                             },
-                         series: []
+                         series: [],
+                             xAxis: {
+                                type: 'datetime' //ensures that xAxis is treated as datetime values
+                            }
                         }
                         
                         for (var y = 0; y < data[x]["category"].length; y++) {
-                            ar.push([data[x]["category"][y], data[x]["data"][y]]);
+                            _date = data[x]["category"][y];
+                            
+                            ar.push([_date, data[x]["data"][y]]);
                         }
                         
                         console.log(ar);
@@ -50,8 +56,6 @@ $(function () {
                         
                         chart[x] = new Highcharts.Chart(options);
                     }
-                
-            
             }
         });
     });

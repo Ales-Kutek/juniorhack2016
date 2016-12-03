@@ -43,7 +43,7 @@ class HomepagePresenter extends SecurePresenter
             foreach ($element->heat_sensor as $key => $value) {
                 $count = $this->heatSensorLogRepository->countRecords($value->id);
                 
-                $max = 20;
+                $max = 100;
                 
                 $log = $this->heatSensorLogRepository->getRecords($value->id, $count - $max, $max);
                 
@@ -52,7 +52,7 @@ class HomepagePresenter extends SecurePresenter
                 
                 foreach ($log as $k => $v) {
                     $data[] = $v->value;
-                    $category[] = $convertor->convertDateToString($v->created);
+                    $category[] = $v->created->getTimestamp();
                 }
                 
                 $sensors[] = array(
@@ -65,7 +65,7 @@ class HomepagePresenter extends SecurePresenter
             foreach ($element->humidity_sensor as $key => $value) {
                 $countHum = $this->humiditySensorLogRepository->countRecords($value->id);
                 
-                $max = 20;
+                $max = 100;
                 
                 $logHum = $this->humiditySensorLogRepository->getRecords($value->id, $countHum - $max, $max);
                 
@@ -74,7 +74,7 @@ class HomepagePresenter extends SecurePresenter
                 
                 foreach ($logHum as $k => $v) {
                     $data[] = $v->value;
-                    $category[] = $convertor->convertDateToString($v->created);
+                    $category[] = $v->created->getTimestamp();
                 }
                 
                 $sensors[] = array(
