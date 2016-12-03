@@ -966,11 +966,9 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     box-sizing:border-box; /*#C0392B*/
     width:20vw;
     border:4px solid #6E2018;
-    color:#6E2018;
 }
-.bg-aqua:hover{
-    width:100vw;
-    background:black;
+.bg-aqua-text{
+    color:#6e2018;
 }
 .add{
     min-height:50px;
@@ -985,18 +983,21 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     border-left:0;
     padding-left:51px;
     background:green;
+    box-sizing: border-box;
 }
 .main-header{
     height:auto;
 }
 .content-wrapper{
-    margin-left:0px;
+    background:white;
+    margin-top:90px;
+    margin-left:120px;
 }
 .sidebar-wrapper{
     background:#C5D8EF;
     min-height:100vh;
     padding-left:0px;
-    margin-top:115px;
+    margin-top:85px;
 }
 .footInfoBox{
     display:none;
@@ -1016,4 +1017,10 @@ header{
 }
 header{
     background:#C5D8EF;
+}
+.logo-background{
+    background-image:url("../../images/vrsek_stranky.png");
+    background-size:100% 100%;
+    width:100%;
+    min-height:50vh;
 }

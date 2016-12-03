@@ -7,7 +7,7 @@
     {foreach $rooms as $r}
     <div class="col-lg-12 col-xs-12" style="background-color: {$r->color}">
         <div class="bg-aqua">
-                <h3>{$r->name}</h3>
+                <h3 class="bg-aqua-text">{$r->name}</h3>
                 <p></p>
                 {foreach $r->heat_sensor as $v}
                     {$v->name}: {$heat_sensor[$v->id][0]->value}°C<br>
@@ -21,10 +21,10 @@
     {/foreach}
     <div class="row">
     <a href="{plink Element:new}">
-        <button class="col-xs-6 add first-add"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
+        <button class="add first-add"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
     </a>
         <a href="#">
-            <button class="col-xs-6 add"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+            <button class="add"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
         </a>
     </div>
 </div>   
