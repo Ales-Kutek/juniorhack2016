@@ -19,7 +19,7 @@ $(function () {
                 dataType: "json",
                 url: window.location.href + "/homepage/default/" + _id + "/",
                 success: function(data) {
-                    
+                    if (data != null) {
                     var options;
                     var ar = new Array();
                     var chart = {};
@@ -71,6 +71,9 @@ $(function () {
                         
                         chart[x] = new Highcharts.Chart(options);
                     }
+                } else {
+                    console.log("fdfsfsd");
+                }
             }
         });
     });

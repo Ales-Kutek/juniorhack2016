@@ -36,6 +36,8 @@ class HomepagePresenter extends SecurePresenter
         public function handleGetChart($id) {
             $element = $this->elementRepository->getSingle($id, TRUE);
             
+            if ($element !== NULL) {
+            
             $convertor = new \Utils\DateConvertor();
             
             $sensors = array();
@@ -82,6 +84,10 @@ class HomepagePresenter extends SecurePresenter
                     "data" => $data,
                     "category" => $category
                 );
+            }
+            } else {
+                echo json_encode(NULL);
+                die();
             }
             
             echo json_encode($sensors);

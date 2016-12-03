@@ -128,12 +128,13 @@ class Element extends EntityDao
 
         if ($hash === false) {
             $result = $query->getSingleResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
-            
+
             $result = $temp;
         } else if ($hash === true) {
             $result = $query->getSingleResult(\Doctrine\ORM\Query::HYDRATE_OBJECT);
-        }
+
 
         return $result;
+    }
     }
 }
