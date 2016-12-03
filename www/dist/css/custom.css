@@ -1,5 +1,4 @@
 body{
-    min-width: 1280px;
     overflow-x: scroll;
 }
 
@@ -906,7 +905,6 @@ div[id*="frm-new-person"] .input-group .input-group-addon{
 body.admin .content-wrapper,
 body.admin .wrapper,
 body.admin{
-    min-height: 1000px !important;
 }
 body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     padding: 9px 5px 9px 15px;
@@ -964,15 +962,29 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
 .bg-aqua{
     padding-left:10px;
     padding-bottom:5px;
-    padding-top:1px;
     margin-top:2px;
+    box-sizing:border-box; /*#C0392B*/
+    width:20vw;
+    border:4px solid #6E2018;
+    color:#6E2018;
+}
+.bg-aqua:hover{
+    width:100vw;
+    background:black;
 }
 .add{
     min-height:50px;
     background:#1468A4;
     color:white;
     margin-top:8px;
-    margin-left:10px;
+    box-sizing: border-box;
+    padding-right:30px;
+    background:red;
+}
+.first-add{
+    border-left:0;
+    padding-left:51px;
+    background:green;
 }
 .main-header{
     height:auto;
@@ -984,6 +996,7 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     background:#C5D8EF;
     min-height:100vh;
     padding-left:0px;
+    margin-top:115px;
 }
 .footInfoBox{
     display:none;
@@ -996,11 +1009,6 @@ footer{
 }
 .header-color{
     color:#C5D8EF;
-}
-.bg-aqua:hover{
-    border-bottom-right-radius:40px;
-    border-top-right-radius:40px;
-    width:50vw;
 }
 header{
     margin-bottom:170px;
