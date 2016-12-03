@@ -149,7 +149,7 @@ class HomepagePresenter extends SecurePresenter
             $this->heatSensorLogRepository->getEntityManager()->persist($humidityLogItem);
             $this->heatSensorLogRepository->getEntityManager()->persist($heatLogItem);
             $this->heatSensorLogRepository->getEntityManager()->flush();
-            echo '<meta http-equiv="refresh" content="20">';
+            echo '<meta http-equiv="refresh" content="5">';
             die();
         }
 }

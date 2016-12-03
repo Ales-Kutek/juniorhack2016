@@ -45,7 +45,6 @@
                 type: "GET",
                 data: $.param(dd),
                 success: function(data) {
-                    console.log(data);
                     $("#snippet--room").html(data["snippets"]["snippet--room"]);
                 }
             });
