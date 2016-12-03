@@ -17,7 +17,7 @@ $(function () {
                 type: "GET",
                 data: _data,
                 dataType: "json",
-                url: window.location.href + "/homepage/default/" + _id + "/",
+                url: "http://localhost/homepage/default/" + _id + "/",
                 success: function(data) {
                     if (data != null) {
                     var options;

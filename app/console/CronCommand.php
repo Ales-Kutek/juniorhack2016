@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * FixturesCommand class
+ * CronCommand class
  */
 class CronCommand extends Command
 {
@@ -42,7 +42,7 @@ class CronCommand extends Command
      */
     protected function configure()
     {
-        $this->setName('app:fixtures')
+        $this->setName('app:cron')
             ->setDescription('Apllying fixtures.');
     }
 
@@ -54,33 +54,11 @@ class CronCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->truncateAllTables();
-        
-        /** musí se nahrávat v určitém pořádku kvůli asociacím (soubory bez asociací dávat z pravidla první) */
-        $this->alice->load(array(
-            __DIR__.'/../fixtures/Group.yml',
-            __DIR__.'/../fixtures/User.yml'
-        ));
-    }
-    
-    public function truncateAllTables() {
-        $query = $this->em->getConnection()->prepare("SELECT Concat('TRUNCATE TABLE `',TABLE_NAME, '`;') FROM INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('hackathon');");
-        $query->execute();
+       
 
-        $result = $query->fetchAll(\PDO::FETCH_NUM);
+        $url = "http://localhost/homepage/default/0?do=getArdu";
         
-        $query->closeCursor();
-        
-        $query = NULL;
-        
-        $sql = "";
-        
-        foreach($result as $key => $value) {
-            $sql .= $value[0];
-        }
-        
-        $query = $this->em->getConnection()->exec("SET FOREIGN_KEY_CHECKS=0;" . $sql . "SET FOREIGN_KEY_CHECKS=1;");
-        
-        $query = NULL;
+        file_get_contents($url);
+
     }
 }
