@@ -8,7 +8,7 @@
      */
     class DateConvertor {
         /** @var string $dateFormat základní formát datumu (27. 11. 2016) */
-        private $dateFormat = "j. n. Y";
+        private $dateFormat = "j. n. Y h:i:s";
         
         /** @var string $databaseFormat formát při práci s databází */
         private $databaseFormat = "Y-m-d";

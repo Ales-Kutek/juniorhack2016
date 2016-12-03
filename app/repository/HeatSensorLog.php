@@ -49,6 +49,37 @@ class HeatSensorLog extends EntityDao
         return $result;
     }
     
+    public function getRecords($id, $firstResult, $max) {
+                $query = $this->createQueryBuilder()
+                      ->select("u")
+                      ->from('\Entity\HeatSensorLog', "u")
+                        ->where("u.heat_sensor = :hs")
+                            ->setParameter("hs", $id)
+                      ->orderBy("u.created", "ASC")
+                        ->setFirstResult($firstResult)
+                        ->setMaxResults($max);
+        
+        $query = $query->getQuery();
+        
+        $result = $query->getResult();
+        
+        return $result;
+    }
+    
+    public function countRecords($id) {
+                $query = $this->createQueryBuilder()
+                      ->select("count(u)")
+                      ->from('\Entity\HeatSensorLog', "u")
+                        ->where("u.heat_sensor = :hs")
+                            ->setParameter("hs", $id);
+        
+        $query = $query->getQuery();
+        
+        $result = $query->getSingleScalarResult();
+        
+        return $result;
+    }
+    
     /**
      * získání všech primárních hodnot jako array
      * @return array

@@ -32,6 +32,62 @@ class HomepagePresenter extends SecurePresenter
             $this->humiditySensorRepository = $humiditySensorRepository;
             $this->heatSensorLogRepository = $heatSensorLogRepository;
         }
+        
+        public function handleGetChart($id) {
+            $element = $this->elementRepository->getSingle($id, TRUE);
+            
+            $convertor = new \Utils\DateConvertor();
+            
+            $sensors = array();
+            
+            foreach ($element->heat_sensor as $key => $value) {
+                $count = $this->heatSensorLogRepository->countRecords($value->id);
+                
+                $max = 20;
+                
+                $log = $this->heatSensorLogRepository->getRecords($value->id, $count - $max, $max);
+                
+                $data = array();
+                $category = array();
+                
+                foreach ($log as $k => $v) {
+                    $data[] = $v->value;
+                    $category[] = $convertor->convertDateToString($v->created);
+                }
+                
+                $sensors[] = array(
+                    "name" => $value->name,
+                    "data" => $data,
+                    "category" => $category
+                );
+            }
+            
+            foreach ($element->humidity_sensor as $key => $value) {
+                $countHum = $this->humiditySensorLogRepository->countRecords($value->id);
+                
+                $max = 20;
+                
+                $logHum = $this->humiditySensorLogRepository->getRecords($value->id, $countHum - $max, $max);
+                
+                $data = array();
+                $category = array();
+                
+                foreach ($logHum as $k => $v) {
+                    $data[] = $v->value;
+                    $category[] = $convertor->convertDateToString($v->created);
+                }
+                
+                $sensors[] = array(
+                    "name" => $value->name,
+                    "data" => $data,
+                    "category" => $category
+                );
+            }
+            
+            echo json_encode($sensors);
+            
+            die();
+        }
 
 	public function renderDefault()
 	{

@@ -117,8 +117,10 @@ class Element extends EntityDao
         $query = $this->createQueryBuilder();
 
         $query
-            ->select("u, g")
+            ->select("u, hs, hms")
             ->from("\Entity\Element", "u")
+                ->leftJoin("u.heat_sensor", "hs")
+                ->leftJoin("u.humidity_sensor", "hms")
             ->where("u.id = :id")
             ->setParameter("id", $id);
 
