@@ -968,11 +968,17 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     padding-bottom:5px;
     margin-top:1px;
     box-sizing:border-box; /*#C0392B*/
+    border:4px solid #C0392B;
     width:20vw;
-    border:4px solid #6E2018;
 }
 .bg-aqua:hover{
     cursor:pointer;
+    border:4px solid #880D00;
+    background:#880D00 !important;
+    color:white;
+}
+.bg-aqua:hover .bg-aqua-text{
+    color:white
 }
 .bg-aqua-text{
     color:#6e2018;
@@ -1039,6 +1045,8 @@ header{
     padding:5px;
     background:#2ECC71;
     color:#1A7541;
+    border:2px solid #1A7541;
+    border-radius:0px;
 }
 .add-sensor:hover{
     background:#009943;
