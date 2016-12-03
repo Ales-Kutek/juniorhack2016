@@ -1,0 +1,21 @@
+\Entity\HeatSensor:
+    hts1:
+        name: 'Tepelný senzor'
+        element: '@element1'
+        code (unique): '<numberBetween(1, 99999)>'
+    hts2:
+        name: 'Tepelný senzor'
+        element: '@element2'
+        code (unique): '<numberBetween(1, 99999)>'
+    hts3:
+        name: 'Tepelný senzor'
+        element: '@element3'
+        code (unique): '<numberBetween(1, 99999)>'
+    hts4:
+        name: 'Tepelný senzor'
+        element: '@element4'
+        code (unique): '<numberBetween(1, 99999)>'
+    hts5:
+        name: 'Tepelný senzor'
+        element: '@element5'
+        code (unique): '<numberBetween(1, 99999)>'

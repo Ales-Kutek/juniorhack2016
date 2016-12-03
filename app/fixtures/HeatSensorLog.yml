@@ -1,0 +1,5 @@
+\Entity\HeatSensorLog:
+    loght{1..1000}:
+        value: <numberBetween(21, 24)>
+        heat_sensor: '@hts*'
+        created: <dateTimeBetween('-1 days', 'now')>

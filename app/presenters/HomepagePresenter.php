@@ -18,5 +18,12 @@ class HomepagePresenter extends SecurePresenter
 	{
 		$this->template->rooms = $this->elementRepository->getAll(FALSE, $this->user->identity->id);
 	}
+        
+        public function handleGetValues() {
+            $content = file_get_contents("http://192.168.133.103/");
+            
+            echo $content;
+            die();
+        }
 
 }

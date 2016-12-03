@@ -1,0 +1,22 @@
+\Entity\HumiditySensor:
+    humidity1:
+        name: 'Senzor vlhkosti'
+        element: '@element1'
+        code (unique): '<numberBetween(1, 99999)>'
+    humidity2:
+        name: 'Senzor vlhkosti'
+        element: '@element2'
+        code (unique): '<numberBetween(1, 99999)>'
+    humidity3:
+        name: 'Senzor vlhkosti'
+        element: '@element3'
+        code (unique): '<numberBetween(1, 99999)>'
+    humidity4:
+        name: 'Senzor vlhkosti'
+        element: '@element4'
+        code (unique): '<numberBetween(1, 99999)>'
+    humidity5:
+        name: 'Senzor vlhkosti'
+        element: '@element5'
+        code (unique): '<numberBetween(1, 99999)>'
+

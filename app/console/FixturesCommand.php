@@ -59,7 +59,12 @@ class FixturesCommand extends Command
         /** musí se nahrávat v určitém pořádku kvůli asociacím (soubory bez asociací dávat z pravidla první) */
         $this->alice->load(array(
             __DIR__.'/../fixtures/Group.yml',
-            __DIR__.'/../fixtures/User.yml'
+            __DIR__.'/../fixtures/User.yml',
+            __DIR__.'/../fixtures/Element.yml',
+            __DIR__.'/../fixtures/HeatSensor.yml',
+            __DIR__.'/../fixtures/HeatSensorLog.yml',
+            __DIR__.'/../fixtures/HumiditySensor.yml',
+            __DIR__.'/../fixtures/HumiditySensorLog.yml',
         ));
     }
     

@@ -1,0 +1,21 @@
+\Entity\Element:
+    element1:
+        name: 'Kuchyň'
+        user: '@user1'
+        color: 'ffffff'
+    element2:
+        name: 'Obývací pokoj'
+        user: '@user1'
+        color: 'ffffff'
+    element3:
+        name: 'Záchod'
+        user: '@user1'
+        color: 'ffffff'
+    element4:
+        name: 'Koupelna'
+        user: '@user1'
+        color: 'ffffff'
+    element5:
+        name: 'Pokoj'
+        user: '@user1'
+        color: 'ffffff'
