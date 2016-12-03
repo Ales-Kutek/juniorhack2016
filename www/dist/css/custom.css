@@ -1050,6 +1050,7 @@ header{
 }
 .add-sensor:hover{
     background:#009943;
+    color:white;
 }
 .login-box-body{
     border-radius:10px;
