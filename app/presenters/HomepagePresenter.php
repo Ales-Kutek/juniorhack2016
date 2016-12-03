@@ -33,6 +33,11 @@ class HomepagePresenter extends SecurePresenter
             $this->heatSensorLogRepository = $heatSensorLogRepository;
         }
         
+        public function handleRedraw()
+        {
+            $this->redrawControl();
+        }
+        
         public function handleGetChart($id) {
             $element = $this->elementRepository->getSingle($id, TRUE);
             

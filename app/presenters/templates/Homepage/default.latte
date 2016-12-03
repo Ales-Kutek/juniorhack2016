@@ -35,3 +35,24 @@
 {block chart}
     <div id="main-chart"></div>
 {/block}
+
+{block script}
+    <script>
+        var dd = new Object();
+        
+        dd["do"] = "redraw";
+        setInterval(function() {
+            $.ajax({
+                url: "http://localhost/",
+                dataType: "json",
+                type: "GET",
+                data: $.param(dd),
+                success: function(data) {
+                    console.log(data);
+                    $("#snippet--room").html(data["snippets"]["snippet--room"]);
+                }
+            });
+        }, 5000);
+        
+    </script>
+{/block}
