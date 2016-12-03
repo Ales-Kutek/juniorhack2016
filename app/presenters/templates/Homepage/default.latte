@@ -16,7 +16,7 @@
                     {foreach $r->humidity_sensor as $v}
                         {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
                     {/foreach}
-                    <a href="{plink HeatSensor:new, id => $r->id}">Přidat nový sensor</a>
+                    <a href="{plink HeatSensor:new, id => $r->id}"><button class="add-sensor">Přidat sensor</button></a>
             </div>
         </div>
         {/foreach}
