@@ -128,6 +128,9 @@ class HomepagePresenter extends SecurePresenter
             $output = curl_exec($ch); 
             curl_close($ch);    
             $content = $output;
+            
+            echo $content;
+            die();
         }
         
         public function handleGetArdu() {

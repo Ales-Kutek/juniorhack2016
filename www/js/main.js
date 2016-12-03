@@ -7,6 +7,7 @@ var _id = null;
 $(function () {
     
         $("body").on("click", "._room", function() {
+            if (!$("._light").is(":hover")) {
             _id = $(this).attr("data-id");
             
             _data = $.param({
@@ -76,6 +77,7 @@ $(function () {
                 }
             }
         });
+        }
     });
 });
 

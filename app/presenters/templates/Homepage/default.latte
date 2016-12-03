@@ -17,11 +17,15 @@
                         {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
                     {/foreach}
                     {if $k == 0}
-                        {if $light == 0}
-                            Světla: <a class="ajax" href="{plink light!}"><i class="fa fa-lightbulb-o" style="color: red; font-size: 50px" aria-hidden="true"></i></a>
-                        {else}
-                        Světla: <a class="ajax" href="{plink light!}"><i class="fa fa-lightbulb-o" style="color: yellow; font-size: 50px" aria-hidden="true"></i></a>
-                        {/if} 
+                        <a href="javascript:void(0)" style="color: white" class="_light">
+                        <div class="wrap-light">
+                            {if $light == 0}
+                            Světla: <i class="fa fa-lightbulb-o" style="color: red; font-size: 50px" aria-hidden="true"></i>
+                            {else}
+                            Světla: <i class="fa fa-lightbulb-o" style="color: yellow; font-size: 50px" aria-hidden="true"></i>
+                            {/if} 
+                        </div>
+                        </a>
                     {/if}
                     <a href="{plink HeatSensor:new, id => $r->id}"><button class="add-sensor">Přidat sensor</button></a>
                 </div>
@@ -57,5 +61,23 @@
             });
         }, 5000);
         
+        var df = new Object();
+        df["do"] = "light";
+        $("body").on("click", "._light", function() {
+            $.ajax({
+                url: "http://localhost/",
+                dataType: "json",
+                type: "GET",
+                data: $.param(df),
+                success: function(data) {
+                    if (data == "OFF") {
+                        $("._light").child("div").children("i").css("color", "red");
+                    } else {
+                        $("._light").children("div").children("i").css("color", "yellow");
+                    }
+                    
+                }
+            });
+        });
     </script>
 {/block}
