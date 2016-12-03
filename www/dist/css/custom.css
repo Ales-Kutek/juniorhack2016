@@ -355,7 +355,7 @@ div[id*="region-pair"] label{
     top: 50px;
     position: absolute;
     z-index: 9999;
-    background: #222d32;
+    background: white;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     width: 20px;
@@ -369,7 +369,7 @@ div[id*="region-pair"] label{
 .sidebar-toggle:hover,
 .sidebar-toggle:focus,
 .sidebar-toggle:active{
-    background: #222d32 !important;
+    background: white !important;
 }
 .sidebar-toggle:before{
     content: "\f0c9";
@@ -968,11 +968,10 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     margin-top:2px;
 }
 .add{
-    min-width:150px;
     min-height:50px;
     background:#1468A4;
     color:white;
-    margin-top:20px;
+    margin-top:8px;
     margin-left:10px;
 }
 .main-header{
@@ -982,7 +981,7 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     margin-left:0px;
 }
 .sidebar-wrapper{
-    background:#222d32;
+    background:#C5D8EF;
     min-height:100vh;
     padding-left:0px;
 }
@@ -996,39 +995,17 @@ footer{
     display:none;
 }
 .header-color{
-    color:white;
+    color:#C5D8EF;
 }
 .bg-aqua:hover{
     border-bottom-right-radius:40px;
     border-top-right-radius:40px;
     width:50vw;
 }
-/*.img_wrapper{
-  min-height: 210px;
-  background-image: url(../../images/vrsek_stranky.png);
-  padding-left: 280px;
+header{
+    margin-bottom:170px;
+    background:#222;
 }
-.img_txt_wrapper{
-  padding-left: 10px;
-  padding-top: 1px;
+header{
+    background:#C5D8EF;
 }
-.img_hline{
-  float:left;
-  margin-top: 25px;
-}
-.img_name_corp{
-  color: #CCCCCC;
-  font-size: 40px;
-  
-}
-.name_under_corp{
-  color: #AAAADD;
-  font-size: 25px;
-  margin-top: -40px;
-}
-
-.img_wrapper_m{
-  min-height: 210px;
-  background-image: url(vrsek_stranky.png);
-  padding-left: 15px;
-}*/
