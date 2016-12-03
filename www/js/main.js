@@ -19,23 +19,42 @@ $(function () {
                 dataType: "json",
                 url: window.location.href + "/homepage/default/" + _id + "/",
                 success: function(data) {
-                    console.log(data);
-                    var options = {
-                    chart: {
-                            renderTo: 'main-chart',
-                            defaultSeriesType: 'spline'
-                        },
-                        series: []
-                    };
-
-                    options.series = [
-                        {"name": 'A', data: [1,2,3,2,1]}
-                    ];
-
-                    var chart = new Highcharts.Chart(options);  
-                }
-            });
+                    console.log(data.length);
+                    
+                    var options;
+                    var ar = new Array();
+                    var chart = {};
+                    
+                    for (var x = 0; x < data.length; x++) {
+                        console.log("Lfdsfg");
+                        ar = new Array();
+                        options = {
+                        chart: {
+                                renderTo: 'main-chart',
+                                defaultSeriesType: 'spline'
+                            },
+                         series: []
+                        }
+                        
+                        for (var y = 0; y < data[x]["category"].length; y++) {
+                            ar.push([data[x]["category"][y], data[x]["data"][y]]);
+                        }
+                        
+                        console.log(ar);
+                        
+                        options.series = [
+                            {
+                                data: ar
+                            }
+                        ];
+                        
+                        chart[x] = new Highcharts.Chart(options);
+                    }
+                
+            
+            }
         });
+    });
 });
 
 /**
