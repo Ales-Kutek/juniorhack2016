@@ -303,6 +303,7 @@
                 {block sidebar}{/block}
             </div>
             <div class="content-wrapper col-md-8">
+                {block chart}{/block}
                 <!-- Content Header (Page header) -->
                 <div class="stickyHelper">
                     <section class="content-header sticky">
@@ -311,8 +312,6 @@
                     </section>
                 </div>
                 <section class="content">
-                    
-
                     {snippet flashMessage}
                         {*
                         <div n:foreach="$flashes as $flash" class="callout callout-{$flash->type}">

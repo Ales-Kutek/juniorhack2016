@@ -1,6 +1,43 @@
 //nastevení češtiny pro moment.js
 moment.locale("cs");
 
+var _data = null;
+var _id = null;
+        
+$(function () {
+    
+        _data = $.param({
+            do: "getChart",
+            id: _id
+        });
+
+        setInterval(function() {
+            if (_id !== null && _data !== null) {
+                $.ajax({
+                    type: "GET",
+                    data: _data,
+                    dataType: "text",
+                    url: window.location.href,
+                    success: function(data) {
+                        var options = {
+                        chart: {
+                                renderTo: 'main-chart',
+                                defaultSeriesType: 'spline'
+                            },
+                            series: []
+                        };
+
+                        options.series = [
+                            {"name": 'A', data: [1,2,3,2,1]}
+                        ];
+
+                        var chart = new Highcharts.Chart(options);  
+                    }
+                });
+            }
+        }, 5000);
+});
+
 /**
  * slug
  */
