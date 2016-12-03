@@ -19,38 +19,50 @@ $(function () {
                 dataType: "json",
                 url: window.location.href + "/homepage/default/" + _id + "/",
                 success: function(data) {
-                    console.log(data.length);
                     
                     var options;
                     var ar = new Array();
                     var chart = {};
                     var _date = [];
+                    var color = "blue";
                     
                     for (var x = 0; x < data.length; x++) {
-                        console.log("Lfdsfg");
+                        color = "blue";
+                        $("#main-chart").append("<div id='_chart" + x + "'></div>");
+
                         ar = new Array();
                         options = {
                         chart: {
-                                renderTo: 'main-chart',
+                                renderTo: '_chart' + x,
                                 defaultSeriesType: 'spline'
                             },
                          series: [],
-                             xAxis: {
-                                type: 'datetime' //ensures that xAxis is treated as datetime values
-                            }
+                        xAxis: {
+                           type: 'datetime'
                         }
+                        };
                         
                         for (var y = 0; y < data[x]["category"].length; y++) {
                             _date = data[x]["category"][y];
                             
                             ar.push([_date, data[x]["data"][y]]);
                         }
+
                         
-                        console.log(ar);
+
+                        if (data[x]["name"] == "Tepelný senzor") {
+                            color = "red";
+                        }
+                        
+                        options.title = {
+                            text:  data[x]["name"]
+                        };
                         
                         options.series = [
                             {
-                                data: ar
+                                data: ar,
+                                name: data[x]["name"],
+                                color: color
                             }
                         ];
                         
