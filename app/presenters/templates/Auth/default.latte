@@ -1,15 +1,8 @@
 {block content}
 
-<img src="/dist/img/bobcat.png" class="loginLogo" alt="logo" title="Bobcat">
+<img src="../../../images/logo_login.png" class="loginLogo" alt="logo" title="Home Control online" height="235px" width="137.5px">
 
 <div class="login-box">
-    <div class="login-logo">
-        {*
-        <b>CRM</b>
-        <br>
-        *}
-        Přihlášení
-    </div>
         
     {form authForm}
     <div n:foreach="$flashes as $flash" class="callout callout-{$flash->type}">{$flash->message}</div>
@@ -33,7 +26,7 @@
             <div class="relative">
                 {pair remember}
             </div>
-            <div class="relative">
+            <div class="relative send-butt">
                 {pair send}
             </div>
         {/form}

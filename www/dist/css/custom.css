@@ -968,11 +968,17 @@ body.admin .main-sidebar.sticked .sidebar-menu>li>a{
     padding-bottom:5px;
     margin-top:1px;
     box-sizing:border-box; /*#C0392B*/
+    border:4px solid #C0392B;
     width:20vw;
-    border:4px solid #6E2018;
 }
 .bg-aqua:hover{
     cursor:pointer;
+    border:4px solid #880D00;
+    background:#880D00 !important;
+    color:white;
+}
+.bg-aqua:hover .bg-aqua-text{
+    color:white
 }
 .bg-aqua-text{
     color:#6e2018;
@@ -1026,7 +1032,7 @@ header{
     background:#222;
 }
 header{
-    background:#C5D8EF;
+    background:white !important;
 }
 .logo-background{
     background-image:url("../../images/vrsek_stranky.png");
@@ -1039,15 +1045,33 @@ header{
     padding:5px;
     background:#2ECC71;
     color:#1A7541;
+    border:2px solid #1A7541;
+    border-radius:0px;
 }
 .add-sensor:hover{
     background:#009943;
 }
+.login-box-body{
+    border-radius:10px;
+}
+.send-butt{
+    background:#C0392B;
+}
+.btn-primary{
+    background:#C0392B !important;
+    border: 1px solid #C0392B;
+}
+main-header{
+    background:white !important;
+}
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 768px) {
     .logo-background{
-        background-image:url("../../images/vrsek_stranky_mobil.png");
-        margin-bottom:20px;
+        background-image:url("../../images/logo_login.png");
+        width:200px;
+        height:200px;
+        margin-bottom:80px;
+        margin:auto;
     }
     .navbar-static-top{
         display:none;
@@ -1061,11 +1085,12 @@ header{
     .bg-aqua{
         margin-top:0px;
         width:100%;
+        margin-top:3px;
     }
     .sidebar-wrapper{
         width:100%;
         padding:0;
-        margin-top:80px;
+        margin-top:120px;
     }
     .add{
         margin:0;
