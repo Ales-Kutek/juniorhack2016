@@ -15,17 +15,14 @@
                 {foreach $r->humidity_sensor as $v}
                     {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
                 {/foreach}
-                <a href="{plink HeatSensor:new, id => $r->id}">Přidat nový sensor</a>
+                <a href="{plink HeatSensor:new, id => $r->id}"><button class="add-sensor">Přidat sensor</button></a>
         </div>
     </div>
     {/foreach}
     <div class="row">
     <a href="{plink Element:new}">
-        <button class="add first-add col-xs-6"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
+        <button class="add first-add col-xs-12"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
     </a>
-        <a href="#">
-            <button class="col-xs-6 add"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
-        </a>
     </div>
 </div>
 {/block}
