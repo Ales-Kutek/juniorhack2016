@@ -1,5 +1,5 @@
 \Entity\HumiditySensorLog:
     loght{1..1000}:
-        value: <numberBetween(55, 75)>
+        value: <numberBetween(20, 30)>
         humidity_sensor: '@humidity*'
         created: <dateTimeBetween('-1 days', 'now')>
