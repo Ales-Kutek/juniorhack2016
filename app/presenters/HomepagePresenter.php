@@ -36,8 +36,6 @@ class HomepagePresenter extends SecurePresenter
         public function handleGetChart($id) {
             $element = $this->elementRepository->getSingle($id, TRUE);
             
-            if ($element !== NULL) {
-            
             $convertor = new \Utils\DateConvertor();
             
             $sensors = array();
@@ -84,10 +82,7 @@ class HomepagePresenter extends SecurePresenter
                     "data" => $data,
                     "category" => $category
                 );
-            }
-            } else {
-                echo json_encode(NULL);
-                die();
+            
             }
             
             echo json_encode($sensors);
@@ -115,4 +110,41 @@ class HomepagePresenter extends SecurePresenter
                 $this->template->humidity_sensor = $humidity_sensor;
                 $this->template->rooms = $rooms;
 	}
+        
+        public function handleGetArdu() {
+            $ch = curl_init();
+            
+            $url = "http://192.168.43.19/";
+            
+            curl_setopt($ch, CURLOPT_URL, $url); 
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+            $output = curl_exec($ch); 
+            curl_close($ch);    
+            $content = $output;
+            
+            $content = explode(";", $content);
+            
+            $heat = $content[0];
+            $humidity = $content[1];
+            $light = $content[2];
+            
+            $heatItem = $this->heatSensorRepository->findOneBy(array("id" => 1));
+            $humidityItem = $this->humiditySensorRepository->findOneBy(array("id" => 1));
+            
+            $heatLogItem = new \Entity\HeatSensorLog();
+            
+            $heatLogItem->value = $heat;
+            $heatLogItem->heat_sensor = $heatItem;
+            
+            $humidityLogItem = new \Entity\HumiditySensorLog();
+            
+            $humidityLogItem->value = $humidity;
+            $humidityLogItem->humidity_sensor = $humidityItem;
+            
+            $this->heatSensorLogRepository->getEntityManager()->persist($humidityLogItem);
+            $this->heatSensorLogRepository->getEntityManager()->persist($heatLogItem);
+            $this->heatSensorLogRepository->getEntityManager()->flush();
+            echo '<meta http-equiv="refresh" content="20">';
+            die();
+        }
 }

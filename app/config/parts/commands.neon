@@ -1,3 +1,4 @@
 console:
         commands:
                 - App\Console\FixturesCommand
+                - App\Console\CronCommand

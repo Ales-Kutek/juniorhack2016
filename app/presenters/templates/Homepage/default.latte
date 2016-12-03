@@ -4,21 +4,23 @@
 {/block}
 {block sidebar}
 <div class="row">
-    {foreach $rooms as $r}
-    <div class="col-lg-12 col-xs-12" style="background-color: {$r->color}">
-        <div class="bg-aqua _room" data-id="{$r->id}">
-                <h3 class="bg-aqua-text">{$r->name}</h3>
-                <p></p>
-                {foreach $r->heat_sensor as $v}
-                    {$v->name}: {$heat_sensor[$v->id][0]->value}°C<br>
-                {/foreach}
-                {foreach $r->humidity_sensor as $v}
-                    {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
-                {/foreach}
-                <a href="{plink HeatSensor:new, id => $r->id}"><button class="add-sensor">Přidat sensor</button></a>
+    {snippet room}
+        {foreach $rooms as $r}
+        <div class="col-lg-12 col-xs-12" style="background-color: {$r->color}">
+            <div class="bg-aqua _room" data-id="{$r->id}">
+                    <h3 class="bg-aqua-text">{$r->name}</h3>
+                    <p></p>
+                    {foreach $r->heat_sensor as $v}
+                        {$v->name}: {$heat_sensor[$v->id][0]->value}°C<br>
+                    {/foreach}
+                    {foreach $r->humidity_sensor as $v}
+                        {$v->name}: {$humidity_sensor[$v->id][0]->value}%<br>
+                    {/foreach}
+                    <a href="{plink HeatSensor:new, id => $r->id}">Přidat nový sensor</a>
+            </div>
         </div>
-    </div>
-    {/foreach}
+        {/foreach}
+    {/snippet}
     <div class="row">
     <a href="{plink Element:new}">
         <button class="add first-add col-xs-12"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
