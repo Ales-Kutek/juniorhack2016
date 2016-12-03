@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Bobcat | RENTAL</title>
+        <title>Home Control online</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
         <base href="{$baseUri}"> 
@@ -24,22 +24,38 @@
         <link rel="stylesheet" href="/css/colorbox.css">
         <link rel="stylesheet" href="/dist/css/custom.css">
         <link rel="stylesheet" href="/css/datagrid.min.css">
+
         <link rel=stylesheet href="/dist/css/print.css" media="print">
+
     </head>
     <body class="hold-transition sidebar-mini skin-black {@$_COOKIE['sidebar_type']}{if $user->isInRole('Admin')} admin{/if}">
 
-        <div class="wrapper col-xs-12">
+        <div class="wrapper">
 
             <header class="main-header">
-
+    <!-- COMPUTERS -->
+  <!--  <div class="img_wrapper">
+      <img src="../../../www/images/vrsek_stranky_line.png" class="img_hline" border="0" height="99" width="4">
+      <div class="img_txt_wrapper">
+        <p class="img_name_corp">Home Control</p>
+        <p class="name_under_corp">online</p>
+      </div>
+    </div>
+    
+    <!-- MOBILE 
+    <div class="img_wrapper_m">
+      <img src="../../../www/images/vrsek_stranky_line.png"class="uvodka_line" border="0" height="99" width="4">
+      <div class="img_txt_wrapper">
+        <p class="img_name_corp">Home &nbsp&nbsp Control</p>
+        <p class="img_under_corp">online</p>
+      </div>
+    </div>-->
                 <a href="/" class="logo">
-                    <span class="logo-mini"></span>                   
-                    <span class="logo-lg"></span>
+                    Logo
                 </a>
 
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
-                    <span class="title-head">Home Control online</span>
                     <!-- Sidebar toggle button-->
                         {*
                         <a href="#" class="sidebar-toggle" role="button" data-cookie="sidebar-open">
@@ -66,6 +82,7 @@
 
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
+                            
                             <!-- Messages: style can be found in dropdown.less-->
                             {*
                             <li class="dropdown messages-menu">
@@ -298,11 +315,14 @@
                 </nav>
             </header>
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+            <div class="sidebar-wrapper col-md-3">
+                {block sidebar}{/block}
+            </div>
+            <div class="content-wrapper col-md-9">
                 <!-- Content Header (Page header) -->
                 <div class="stickyHelper">
                     <section class="content-header sticky">
-                            <h1>{block heading}{/block}</h1>
+                        <h1>{block heading}{/block}</h1>
                         {*control breadcrumb*}
                     </section>
                 </div>

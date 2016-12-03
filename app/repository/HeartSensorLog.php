@@ -54,11 +54,7 @@ class HeatSensorLog extends EntityDao
         $item->value = $value;
         
         $item->heat_sensor = $this->getEntityManager()->getRepository(\Entity\HeatSensor::getClassName())
-                ->findOneBy(array("code" => $id));
-        
-        if ($item->heat_sensor === NULL) {
-            throw new \Exception();
-        }
+                ->findOneBy(array("id" => $id));
         
         $this->add($item);
         
